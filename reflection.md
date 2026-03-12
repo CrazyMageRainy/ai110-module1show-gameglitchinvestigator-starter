@@ -7,6 +7,9 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - What did the game look like the first time you ran it?
 - List at least two concrete bugs you noticed at the start  
   (for example: "the secret number kept changing" or "the hints were backwards").
+  The hints are indeed higher (says go higher when it needs to go lower and visce versa).
+  THe new game button appears to not function after you win. Does work while you haven't used all your attempts.
+  Appear to allow attempts more than 8. It goes up more attempts (in history)
 
 ---
 
@@ -16,6 +19,9 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
+Using Gemnini via its vscode plugin. THe first bug with the secrets getting swapped was correctly found with claude. IT was caused
+by an if statement where the results were swapped.
+
 ---
 
 ## 3. Debugging and testing your fixes
@@ -24,7 +30,9 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - Describe at least one test you ran (manual or using pytest)  
   and what it showed you about your code.
 - Did AI help you design or understand any tests? How?
-
+For the First bug claude show that it corrected the logic error from the if statment for the hints. It helped me designed the tests for it, since the tests
+that are already inside it appear to have some issues of its own. They were outputing AssertionError from the statements, since the statements weren't just "Win",
+it was also had emoji and is a full statements.
 ---
 
 ## 4. What did you learn about Streamlit and state?

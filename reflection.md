@@ -9,7 +9,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
   (for example: "the secret number kept changing" or "the hints were backwards").
   The hints are indeed higher (says go higher when it needs to go lower and visce versa).
   THe new game button appears to not function after you win. Does work while you haven't used all your attempts.
-  Appear to allow attempts more than 8. It goes up more attempts (in history)
+  Appear to allow attempts more than 8. It goes up more attempts (in history) or down more than it should. Also noticed something odd when continously submitting guesses at a certain intervals.
 
 ---
 
@@ -21,6 +21,10 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 Using Gemnini via its vscode plugin. THe first bug with the secrets getting swapped was correctly found with claude. IT was caused
 by an if statement where the results were swapped.
+WHen I ask about the logic of the app's game states. It tells me about new bugs with it. The new game bug I saw before was also mentioned.
+It also says there is a bug in attempts in which the attempts is incorrectly reseting to 0 when the initial setup had it at 1, which changes the num of attempts after a reset. It also claims that the secret ignores the difficulty, choosing a number not within the intented range for said difficulty.
+Also another bug I also noticed but wasn't unsure of os that history and scores carry over
+For the state Logic, it recommended me a seperate function to seperate it from the main code ``reset_game()``. It resets the attempts, secret, as well as the status of the st (whats holding the apps state). This fixes our main issue with game not resetting but also the issue of not respecting the difficulty's range.
 
 ---
 
@@ -33,6 +37,7 @@ by an if statement where the results were swapped.
 For the First bug claude show that it corrected the logic error from the if statment for the hints. It helped me designed the tests for it, since the tests
 that are already inside it appear to have some issues of its own. They were outputing AssertionError from the statements, since the statements weren't just "Win",
 it was also had emoji and is a full statements.
+
 ---
 
 ## 4. What did you learn about Streamlit and state?

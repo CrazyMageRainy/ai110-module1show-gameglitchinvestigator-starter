@@ -2,8 +2,8 @@ from logic_utils import check_guess
 
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
-    result = check_guess(50, 50)
-    assert result ==  ("Win", "🎉 Correct!")
+    (result, message) = check_guess(50, 50)
+    assert result == "Win"
 
 # def test_guess_too_high():
 #     # If secret is 50 and guess is 60, hint should be "Too High"

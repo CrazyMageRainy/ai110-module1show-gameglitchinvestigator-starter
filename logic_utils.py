@@ -37,6 +37,14 @@ def check_guess(guess, secret):
         return "Too Low", "📈 Go HIGHER!"
 
 
+def reset_game(state, low: int, high: int):
+    """Reset session state for a new game."""
+    import random
+    state.attempts = 0
+    state.secret = random.randint(low, high)
+    state.status = "playing"
+
+
 def update_score(current_score: int, outcome: str, attempt_number: int):
     """Update score based on outcome and attempt number."""
     if outcome == "Win":

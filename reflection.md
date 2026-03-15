@@ -25,6 +25,7 @@ WHen I ask about the logic of the app's game states. It tells me about new bugs 
 It also says there is a bug in attempts in which the attempts is incorrectly reseting to 0 when the initial setup had it at 1, which changes the num of attempts after a reset. It also claims that the secret ignores the difficulty, choosing a number not within the intented range for said difficulty.
 Also another bug I also noticed but wasn't unsure of os that history and scores carry over
 For the state Logic, it recommended me a seperate function to seperate it from the main code ``reset_game()``. It resets the attempts, secret, as well as the status of the st (whats holding the apps state). This fixes our main issue with game not resetting but also the issue of not respecting the difficulty's range.
+The ai confirms and identifies where I tagged for attempts, where on even guesses it gets converted into a string and not an intger, which would cause logic errors from the TypeErrors when comparing to the secret number
 
 ---
 
@@ -37,7 +38,11 @@ For the state Logic, it recommended me a seperate function to seperate it from t
 For the First bug claude show that it corrected the logic error from the if statment for the hints. It helped me designed the tests for it, since the tests
 that are already inside it appear to have some issues of its own. They were outputing AssertionError from the statements, since the statements weren't just "Win",
 it was also had emoji and is a full statements.
-
+ Claude created this function to seperate the restart game. It changes the values into defaults as well as change the states back to "playing",
+ fixing the issue of the game not restarting after a win or lose. The value of secret number correctly follows the difficulties range.
+Claude figured out that this if statement is the culprit to the clues being reversed. It suggested swapping the
+ statments of the if statement instead of changing the > sign to the < sign, which should have been an easier fix.
+ It wasnt able to give a useful pytest for when the even attempts where being converted into ints, mainly cause where the bug was wasn't in its own function.
 ---
 
 ## 4. What did you learn about Streamlit and state?

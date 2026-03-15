@@ -1,4 +1,5 @@
-from logic_utils import check_guess
+from types import SimpleNamespace
+from logic_utils import check_guess, reset_game
 
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
@@ -19,6 +20,13 @@ def test_hint_too_high_says_go_lower():
     # Bug fix: when guess is too high, hint should say Go LOWER, not Go HIGHER
     outcome, message = check_guess(60, 50)
     assert "LOWER" in message
+
+def test_reset_game_restores_playing_status():
+    # Bug fix: after a won/lost game, reset_game should set status back to "playing"
+    state = SimpleNamespace(attempts=8, secret=42, status="won")
+    reset_game(state, 1, 100)
+    assert state.status == "playing"
+    assert state.attempts == 0
 
 def test_hint_too_low_says_go_higher():
     # Bug fix: when guess is too low, hint should say Go HIGHER, not Go LOWER

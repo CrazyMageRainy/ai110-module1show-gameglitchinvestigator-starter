@@ -36,7 +36,8 @@ def check_guess(guess, secret):
             return "Too High", "📉 Go LOWER!"
         return "Too Low", "📈 Go HIGHER!"
 
-
+# Claude created this function to seperate the restart game. It changes the values into defaults as well as change the states back to "playing"
+# fixing the issue of the game not restarting after a win or lose. The value of secret number correctly follows the difficulties range
 def reset_game(state, low: int, high: int):
     """Reset session state for a new game."""
     import random
@@ -44,7 +45,7 @@ def reset_game(state, low: int, high: int):
     state.secret = random.randint(low, high)
     state.status = "playing"
 
-
+# Cluade moved the function here. It fixes the bug where it fixes the score from changing when attempt number is even
 def update_score(current_score: int, outcome: str, attempt_number: int):
     """Update score based on outcome and attempt number."""
     if outcome == "Win":

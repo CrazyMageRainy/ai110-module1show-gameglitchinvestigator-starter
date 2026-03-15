@@ -1,5 +1,5 @@
 from types import SimpleNamespace
-from logic_utils import check_guess, reset_game, parse_guess
+from logic_utils import check_guess, reset_game, parse_guess, get_range_for_difficulty
 
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
@@ -61,3 +61,21 @@ def test_valid_guess_is_accepted():
     assert ok == True
     assert guess_int == 42
     assert err is None
+
+def test_get_range_for_difficulty_easy():
+    low, high = get_range_for_difficulty("Easy")
+    assert (low, high) == (1, 20)
+
+def test_get_range_for_difficulty_normal():
+    low, high = get_range_for_difficulty("Normal")
+    assert (low, high) == (1, 50)
+
+def test_get_range_for_difficulty_hard():
+    low, high = get_range_for_difficulty("Hard")
+    assert (low, high) == (1, 100)
+
+def test_get_range_for_difficulty_hard_is_wider_than_normal():
+    # Hard should have a larger range than Normal to actually be harder
+    _, hard_high = get_range_for_difficulty("Hard")
+    _, normal_high = get_range_for_difficulty("Normal")
+    assert hard_high > normal_high

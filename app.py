@@ -1,6 +1,6 @@
 import random
 import streamlit as st
-from logic_utils import check_guess, update_score, reset_game
+from logic_utils import check_guess, update_score, reset_game, parse_guess
 
 def get_range_for_difficulty(difficulty: str):
     if difficulty == "Easy":
@@ -150,14 +150,14 @@ if st.session_state.status != "playing":
     st.stop()
 
 if submit:
-    st.session_state.attempts += 1
-
-    ok, guess_int, err = parse_guess(raw_guess)
+    # Moved attempts += 1 from here
+    ok, guess_int, err = parse_guess(raw_guess, low, high)
 
     if not ok:
-        st.session_state.history.append(raw_guess)
+        #removed the line which appended any inputs thats not accepted for a guess // ex: empty string
         st.error(err)
     else:
+        st.session_state.attempts += 1 # Moved to here
         st.session_state.history.append(guess_int)
 
         #removed the if statment where on even attempts get converted into string, messing with the comparison logic

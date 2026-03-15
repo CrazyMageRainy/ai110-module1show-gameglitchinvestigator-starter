@@ -6,7 +6,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 - What did the game look like the first time you ran it?
 - List at least two concrete bugs you noticed at the start  
-  (for example: "the secret number kept changing" or "the hints were backwards").
+  (for example: "the hints were backwards").
   The hints are indeed higher (says go higher when it needs to go lower and visce versa).
   THe new game button appears to not function after you win. Does work while you haven't used all your attempts.
   Appear to allow attempts more than 8. It goes up more attempts (in history) or down more than it should. Also noticed something odd when continously submitting guesses at a certain intervals.
@@ -51,7 +51,9 @@ it was also had emoji and is a full statements.
 ---
 
 ## 4. What did you learn about Streamlit and state?
+
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+
 Streamlit uses states for the game. There are the "playing" , "won", and "lost" state. WHen the game is running, it will be in the playing state. It changes the other
 states depending whether you win or lost the game. What it should do when you rerun the game via the new game button is return the game to a "clean slate" and change the 
 state back to "playing". The states contain the variables used to keep track of the game itself, such as the secret number and the number of tries per the game.

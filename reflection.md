@@ -36,10 +36,10 @@ it was also had emoji and is a full statements.
 ---
 
 ## 4. What did you learn about Streamlit and state?
-
-- In your own words, explain why the secret number kept changing in the original app.
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
-- What change did you make that finally gave the game a stable secret number?
+Streamlit uses states for the game. There are the "playing" , "won", and "lost" state. WHen the game is running, it will be in the playing state. It changes the other
+states depending whether you win or lost the game. What it should do when you rerun the game via the new game button is return the game to a "clean slate" and change the 
+state back to "playing". The states contain the variables used to keep track of the game itself, such as the secret number and the number of tries per the game.
 
 ---
 
